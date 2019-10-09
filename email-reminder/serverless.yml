@@ -1,0 +1,22 @@
+service: email-reminder
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  iamRoleStatments:
+    - Effect: "Allow"
+      Action:
+        - "ses:*"
+      Resource:
+        - "*"
+
+
+functions:
+  dailyReminder:
+    handler: handler.sendDailyReminder
+    events:
+      - schedule: rate(1 day)
+  weekendReminder:
+    handler: handler.sendWeekendReminder
+    events:
+      - schedule: cron(30 22 ? * SUN,SAT *)
