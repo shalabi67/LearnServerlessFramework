@@ -1,0 +1,11 @@
+service: first
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+
+functions:
+  hello:
+    handler: handler.sum
+

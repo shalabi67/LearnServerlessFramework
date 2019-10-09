@@ -1,0 +1,14 @@
+service: sum-api
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+functions:
+  calc:
+    handler: handler.sum
+    events:
+      - http:
+          path: clac/sum
+          method: post
+          cors: true
