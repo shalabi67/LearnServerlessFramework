@@ -1,0 +1,34 @@
+# greeting example
+service: greeting
+
+plugins:
+  - serverless-reqvalidator-plugin
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+functions:
+  greeting:
+    handler: handler.greet
+    events:
+      - http:
+          path: greeting/{name}
+          method: get
+          cors: true
+          reqValidatorName: queryStringValidator
+          request:
+            parameters:
+              querystrings:
+                lang: true   #having lang as required query string parameter.
+
+resources:
+  Resources:
+    queryStringValidator:
+      Type: "AWS::ApiGateway::RequestValidator"
+      Properties:
+        Name: 'my-req-validator'
+        RestApiId:
+          Ref: ApiGatewayRestApi
+        ValidateRequestBody: false
+        ValidateRequestParameters: true
