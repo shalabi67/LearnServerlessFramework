@@ -1,0 +1,39 @@
+
+service: body-mapping-api
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+functions:
+  calc:
+    handler: handler.calc
+    memorySize: 128   #128 MB memory size
+    timeout: 3   #3 seconds timeout.
+    events:
+      - http:
+          path: calc/add
+          method: post
+          cors: true
+          integration: lambda
+          request:
+            template:
+              application/json: >
+                #set($inputRoot = $input.path('$'))
+                {
+                  "number1": $inputRoot.input.operand1,
+                  "number2": $inputRoot.input.operand2
+                }
+          response:
+            headers:
+              Access-Control-Allow-Origin: "'*'"
+              Content-Type: "'application/json'"
+            template: >
+              #set($inputRoot = $input.path('$'))
+              {
+                "result": $inputRoot
+              }
+
