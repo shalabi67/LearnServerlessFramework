@@ -6,13 +6,18 @@ serverless create -t aws-nodejs -p sum-api
 
 
 ##run locally
-- serverless invoke local -f sum-api
-- serverless invoke local -f sum-api -d "{'key':'value'}"
+- npm install --save-dev serverless-offline
+- on serverless.yaml file add the offline plugin
+- serverless invoke local -f clac
+- serverless invoke local -f calc -d "{'key':'value'}"
 
 
 ##deploy
 - serverless deploy
 - sls deploy --stage prod
+
+##get function logs
+
 
 ###TODO: i need to know how to do this
 - sls invoke -f calc
