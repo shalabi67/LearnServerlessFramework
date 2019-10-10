@@ -1,0 +1,9 @@
+# greeting example
+service: greeting
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+functions:
+  greeting:
+    handler: handler.greet
