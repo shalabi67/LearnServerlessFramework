@@ -1,5 +1,5 @@
 {
-  "name": "sum-api",
+  "name": "body-mapping-api",
   "version": "1.0.0",
   "description": "",
   "main": "handler.js",

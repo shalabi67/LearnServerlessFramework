@@ -1,12 +1,29 @@
 service: sum-api
 
+plugins:
+  - serverless-offline
+
 provider:
   name: aws
   runtime: nodejs10.x
+  #we can have these at provider level and in this case they will apply to all functions in this file.
+  #default serverless framework values are 1024MB and 6 s
+  #memorySize: 128   #128 MB memory size
+  #timeout: 3   #3 seconds timeout.
 
 functions:
   calc:
     handler: handler.sum
+    memorySize: 128   #128 MB memory size
+    timeout: 3   #3 seconds timeout.
+    #define VPC
+    vpc:
+      securityGroupIds:
+        - sg-a31bbcf3   #we get this from VPC security group section
+      subnetIds:
+        - subnet-f4f934b9
+        - subnet-24ffc178
+
     events:
       - http:
           path: clac/sum
