@@ -9,3 +9,6 @@ this is a simple example on how to use tpescript with serverless framework.
 ##deploy
 - serverless deploy
 
+##tsconfig.json
+- force strict compilation "strict": true
+- remove comments "removeComments": true
