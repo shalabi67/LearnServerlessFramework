@@ -12,18 +12,19 @@ serverless create -t aws-nodejs -p body-mapping-api
 - serverless invoke local -f clac
 - serverless invoke local -f calc -d "{'key':'value'}"
 
+###intellij
+create a node.js configuration on the configuration set
+- working directory = ~/learn/LearnServerlessFramework/flightright/flight-search
+- javascript file = /usr/local/bin/sls
+- application parameters = offline start
+
 
 ##deploy
 - serverless deploy
 - sls deploy --stage prod
 
 ##get function logs
-
-
-###TODO: i need to know how to do this
-- sls invoke -f calc
-- sls invoke -f calc 
-- sls invoke -f calc -d "{'key':'value'}" --stage prod
+sls logs -f calc
 
 
 ##calling api

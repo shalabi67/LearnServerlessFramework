@@ -18,13 +18,7 @@ serverless create -t aws-nodejs -p body-mapping-api
 - sls deploy --stage prod
 
 ##get function logs
-
-
-###TODO: i need to know how to do this
-- sls invoke -f calc
-- sls invoke -f calc 
-- sls invoke -f calc -d "{'key':'value'}" --stage prod
-
+sls logs -f calc
 
 ##calling api
 curl --request POST \

@@ -1,0 +1,40 @@
+service:
+  name: flight-search
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+functions:
+  searchFlight:
+    handler: handler.findFlight
+    events:
+      - http:
+          path: flights/search    #this is bad api name, it is here just an example
+          method: post
+          integration: lambda
+          request:
+            template:
+              application/json: >
+                #set($inputRoot = $input.path('$'))
+                {
+                  "fromAirport": "$inputRoot.flight.fromAirport",
+                  "toAirport": "$inputRoot.flight.toAirport",
+                  "airline": "$inputRoot.flight.airline",
+                  "flightStartDate": "$inputRoot.flight.flightStartDate",
+                  "flightEndDate": "$inputRoot.flight.flightEndDate"
+                }
+          response:
+            headers:
+              Access-Control-Allow-Origin: "'*'"
+              Content-Type: "'application/json'"
+            template: >
+              #set($inputRoot = $input.path('$'))
+              {
+                "flights": $inputRoot
+              }
+
