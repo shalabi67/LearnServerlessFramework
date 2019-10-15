@@ -26,7 +26,12 @@ curl --request POST \
   --data "{'flight' : {'fromAirport': 'fromAirport 1','toAirport': 'toAirport 1','airline' : 'airline3','flightStartDate': 'flightStartDate','flightEndDate': 'flightEndDate'}}"
 
 ##Testing
-###setup
+###setup unit tests
+- npm install @types/chai @types/mocha --save-dev
+- npm test
+
+###setup integration tests  
+WORKS only with js files this is why we need to build sls webpack
 - npm install --save-dev serverless-mocha-plugin
 - add to serverless-mocha-plugin plugins section
 - create test for your function: sls create test -f searchFlight

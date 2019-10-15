@@ -19,6 +19,10 @@ export class FlightService {
     }
 
     static findFlight(airline:String) {
-        return FlightService.flightsMap.get(airline);
+        if(FlightService.flightsMap.has(airline)) {
+            return FlightService.flightsMap.get(airline);
+        } else {
+            return new Set<Flight>();
+        }
     }
 }
