@@ -9,8 +9,7 @@ serverless create --template aws-nodejs-typescript -p flight-search
 ##run locally
 - npm install --save-dev serverless-offline
 - on serverless.yaml file add the offline plugin
-- serverless invoke local -f clac
-- serverless invoke local -f calc -d "{'key':'value'}"
+- serverless invoke local -f searchFlight -d '{"fromAirport":"fromAirport1", "toAirport":"toAirport1", "airline":"airline1", "flightStartDate":"flightStartDate1", "flightEndDate":"flightEndDate1"}'
 
 
 ##deploy
@@ -20,17 +19,21 @@ serverless create --template aws-nodejs-typescript -p flight-search
 ##get function logs
 sls logs -f searchFlight
 
-###TODO: i need to know how to do this
-- sls invoke -f calc
-- sls invoke -f calc 
-- sls invoke -f calc -d "{'key':'value'}" --stage prod
-
-
 ##calling api
 curl --request POST \
   --url https://gciyjk2d1k.execute-api.us-east-1.amazonaws.com/dev/flights/search \
   --header 'Content-Type: application/json' \
   --data "{'flight' : {'fromAirport': 'fromAirport 1','toAirport': 'toAirport 1','airline' : 'airline3','flightStartDate': 'flightStartDate','flightEndDate': 'flightEndDate'}}"
+
+##Testing
+###setup
+- npm install --save-dev serverless-mocha-plugin
+- add to serverless-mocha-plugin plugins section
+- create test for your function: sls create test -f searchFlight
+- build: sls webpack
+- sls invoke test --root .webpack/service
+
+
 
 
 ##remove

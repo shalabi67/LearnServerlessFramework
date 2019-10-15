@@ -4,6 +4,7 @@ service:
 plugins:
   - serverless-webpack
   - serverless-offline
+  - serverless-mocha-plugin
 
 provider:
   name: aws

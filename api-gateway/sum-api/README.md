@@ -10,6 +10,7 @@ serverless create -t aws-nodejs -p sum-api
 - on serverless.yaml file add the offline plugin
 - serverless invoke local -f clac
 - serverless invoke local -f calc -d "{'key':'value'}"
+
 ###intellij
 create a node.js configuration on the configuration set
 - working directory = ~/learn/LearnServerlessFramework/flightright/flight-search
