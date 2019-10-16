@@ -27,7 +27,7 @@ curl --request POST \
 
 ##Testing
 ###setup unit tests
-- npm install @types/chai @types/mocha --save-dev
+- npm install sinon @types/sinon @types/chai @types/mocha --save-dev
 - npm test
 
 ###setup integration tests  
