@@ -21,6 +21,7 @@ export class FlightRepository {
         FlightRepository.flightsMap.set("airline1", createDumySet("airline1", 1));
         FlightRepository.flightsMap.set("airline2", createDumySet("airline2", 2));
         FlightRepository.flightsMap.set("airline3", createDumySet("airline3", 3));
+        FlightRepository.flightsMap.set("airline4", new Set<Flight>());
     }
 
     findFlights(airline: String):Set<Flight>  {

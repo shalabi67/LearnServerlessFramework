@@ -10,13 +10,21 @@ before(() => {
 beforeEach(() => {
     flightService = new FlightService(flightRepository);
 })
-describe('Find flight based on airline', () => {
-    it('test airline1 airline ', () => {
+describe('FindFlight', () => {
+    it('should return a set of flight for provided airline', () => {
         let flights: Set<Flight>  = flightService.findFlight("airline1");
         expect(flights.size).to.eq(1);
     });
-    it('find non exiting flight', () => {
+    it('should return a set of flight for provided airline', () => {
+        let flights: Set<Flight>  = flightService.findFlight("airline3");
+        expect(flights.size).to.eq(3);
+    });
+    it('should return empty collection if the airline not exist.', () => {
         let flights: Set<Flight>  = flightService.findFlight("notExist");
+        expect(flights.size).to.eq(0);
+    })
+    it('should return empty collection if the airline has no flights.', () => {
+        let flights: Set<Flight>  = flightService.findFlight("airline4");
         expect(flights.size).to.eq(0);
     })
 })
