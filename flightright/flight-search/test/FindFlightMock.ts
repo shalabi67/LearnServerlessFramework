@@ -10,7 +10,7 @@ describe.only('FindFlight Unit Test', function() {
     const airline = 'airline';
     it('should return a set of flights for a provided flight', function() {
         sinon.stub(flightRepository, 'findFlights').callsFake(() => {
-            return createDumySet(airline, 1);
+            return createDummySet(airline, 1);
         });
         let flightService = new FlightService(flightRepository);
         let flights = flightService.findFlight(airline);
@@ -18,7 +18,7 @@ describe.only('FindFlight Unit Test', function() {
     })
 });
 
-function createDumySet(airline: String, index : number):Set<Flight> {
+function createDummySet(airline: String, index : number):Set<Flight> {
     let set = new Set<Flight>();
     for (let i = 0; i < index; i++) {
         set.add(new Flight("TXL" + i, 'AAA', airline, "", ""));

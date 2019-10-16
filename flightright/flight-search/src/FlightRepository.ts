@@ -10,7 +10,7 @@ export class FlightRepository {
     private static initFlightsMap() {
         FlightRepository.flightsMap = new Map<String, Set<Flight>>();
 
-        function createDumySet(airline: String, index : number) {
+        function createDummySet(airline: String, index : number) {
             let set = new Set<Flight>();
             for (let i = 0; i < index; i++) {
                 set.add(new Flight("TXL" + i, 'AAA', airline, "", ""));
@@ -18,9 +18,9 @@ export class FlightRepository {
             return set;
         }
 
-        FlightRepository.flightsMap.set("airline1", createDumySet("airline1", 1));
-        FlightRepository.flightsMap.set("airline2", createDumySet("airline2", 2));
-        FlightRepository.flightsMap.set("airline3", createDumySet("airline3", 3));
+        FlightRepository.flightsMap.set("airline1", createDummySet("airline1", 1));
+        FlightRepository.flightsMap.set("airline2", createDummySet("airline2", 2));
+        FlightRepository.flightsMap.set("airline3", createDummySet("airline3", 3));
         FlightRepository.flightsMap.set("airline4", new Set<Flight>());
     }
 
