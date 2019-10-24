@@ -4,7 +4,10 @@
   "description": "Serverless webpack example using Typescript",
   "main": "handler.js",
   "scripts": {
-    "test": "mocha -r ts-node/register test/**/*.ts"
+    "test": "mocha -r ts-node/register test/**/*.ts",
+    "cucumber": "./node_modules/.bin/cucumber-js --format json:reports/cucumber-report.json --format summary --require-module ts-node/register --require './test/step_definitions/**/*.ts' --format-options '{\"snippetInterface\": \"async-await\"}'",
+    "cucumber1": "tsc && ./node_modules/.bin/cucumber-js features/**/*.feature  --require 'hooks/**/*.ts' --require './lib/test/step-definitions'  --format json:reports/cucumber-report.json --format summary",
+    "cucumber-old": "tsc && ./node_modules/.bin/cucumber-js features/**/*.feature --logLevel=error --require './test/step-definitions/**/*.ts' --require 'hooks/**/*.ts'  --require-module ts-node/register --format-options '{\"snippetInterface\": \"async-await\"}' --format json:reports/cucumber-report.json --format summary"
   },
   "dependencies": {
     "source-map-support": "^0.5.10"
@@ -12,14 +15,20 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.17",
     "@types/chai": "^4.2.3",
+    "@types/cucumber": "^4.0.7",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^10.12.18",
+    "@types/node": "^11.13.23",
     "@types/sinon": "^7.5.0",
+    "chai": "^4.2.0",
+    "cucumber": "^5.1.0",
+    "mocha": "^6.2.1",
+    "serverless": "^1.55.1",
     "serverless-mocha-plugin": "^1.11.0",
     "serverless-offline": "^5.12.0",
     "serverless-webpack": "^5.2.0",
     "sinon": "^7.5.0",
     "ts-loader": "^5.3.3",
+    "ts-node": "^8.4.1",
     "typescript": "^3.2.4",
     "webpack": "^4.29.0"
   },
