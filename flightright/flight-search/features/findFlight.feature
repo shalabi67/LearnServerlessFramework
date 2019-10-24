@@ -1,3 +1,4 @@
+@PROD-1587 @Flight @FindFlight
 Feature: Find Flight
   this will find all flights based on a given airline
   Background:
@@ -12,11 +13,12 @@ Feature: Find Flight
   @main
   Scenario Outline: system returns a set of flights for a specified airline.
     When user provide an airline <airline>
-    Then system provides a set of flights for that airline <fromAirport> <toAirport> <airline> <flightStartDate> <flightEndDate>
+    Then system provides a set of flights for that airline <count>
     Examples:
-      | airline         | fromAirport | toAirport |   flightStartDate     |    flightEndDate     |
-      | france airlines | TXL         | CDG       | 2019/10/10TS10:12:50  | 2019/10/10TS12:12:50 |
-      | france airlines | CDG         | TXL       | 2019/10/10TS10:12:50  | 2019/10/10TS12:12:50 |
+      | airline         | count     |
+      | france airlines | 2         |
+      | berlin airlines | 3         |
+      | france airlines | 2         |
 
 
   @alternative

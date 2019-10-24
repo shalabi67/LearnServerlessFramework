@@ -1,14 +1,14 @@
 import {Flight} from "./Flight";
 
 export class FlightRepository {
-    private static flightsMap: Map<String, Set<Flight>>;
+    private static flightsMap: Map<String, Set<Flight>> = new Map<String, Set<Flight>>();
     static create():FlightRepository {
         let flightRepository = new FlightRepository();
         FlightRepository.initFlightsMap();
         return flightRepository;
     }
     private static initFlightsMap() {
-        FlightRepository.flightsMap = new Map<String, Set<Flight>>();
+        //FlightRepository.flightsMap = new Map<String, Set<Flight>>();
 
         function createDummySet(airline: String, index : number) {
             let set = new Set<Flight>();
@@ -30,5 +30,15 @@ export class FlightRepository {
         } else {
             return new Set<Flight>();
         }
+    }
+
+    static addFlight(flight: Flight) {
+        let set = new Set<Flight>();
+        if(FlightRepository.flightsMap.has(flight.airline)) {
+            set = FlightRepository.flightsMap.get(flight.airline);
+        }
+
+        set.add(flight);
+        FlightRepository.flightsMap.set(flight.airline, set);
     }
 }
