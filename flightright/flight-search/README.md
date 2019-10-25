@@ -28,6 +28,7 @@ curl --request POST \
 ##Testing
 ###setup unit tests
 - npm install sinon mocha cucumber chai @types/cucumber @types/sinon @types/chai @types/mocha --save-dev
+- npm install --save-dev cucumber-html-reporter
 - npm test
 
 ###cucumber

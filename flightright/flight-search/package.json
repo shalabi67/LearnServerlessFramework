@@ -4,7 +4,9 @@
   "description": "Serverless webpack example using Typescript",
   "main": "handler.js",
   "scripts": {
-    "test": "mocha -r ts-node/register test/**/*.ts",
+    "test": "npm run cucumber && npm run report",
+    "mocha": "mocha -r ts-node/register test/**/*.ts",
+    "report": "node test/cucumber-html-reporter.js",
     "cucumber": "./node_modules/.bin/cucumber-js --format json:reports/cucumber-report.json --format summary --require-module ts-node/register --require './test/step_definitions/**/*.ts' --format-options '{\"snippetInterface\": \"async-await\"}'",
     "cucumber1": "tsc && ./node_modules/.bin/cucumber-js features/**/*.feature  --require 'hooks/**/*.ts' --require './lib/test/step-definitions'  --format json:reports/cucumber-report.json --format summary",
     "cucumber-old": "tsc && ./node_modules/.bin/cucumber-js features/**/*.feature --logLevel=error --require './test/step-definitions/**/*.ts' --require 'hooks/**/*.ts'  --require-module ts-node/register --format-options '{\"snippetInterface\": \"async-await\"}' --format json:reports/cucumber-report.json --format summary"
@@ -21,6 +23,7 @@
     "@types/sinon": "^7.5.0",
     "chai": "^4.2.0",
     "cucumber": "^5.1.0",
+    "cucumber-html-reporter": "^5.0.2",
     "mocha": "^6.2.1",
     "serverless": "^1.55.1",
     "serverless-mocha-plugin": "^1.11.0",
