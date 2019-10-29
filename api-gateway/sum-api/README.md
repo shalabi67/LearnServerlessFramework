@@ -13,7 +13,7 @@ serverless create -t aws-nodejs -p sum-api
 
 ###intellij
 create a node.js configuration on the configuration set
-- working directory = ~/learn/LearnServerlessFramework/flightright/flight-search
+- working directory = ~/learn/LearnServerlessFramework/flight/flight-search
 - javascript file = /usr/local/bin/sls
 - application parameters = offline start
 

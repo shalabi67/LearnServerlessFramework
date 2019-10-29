@@ -1,4 +1,4 @@
-@PROD-1587 @Flight @FindFlight
+@Flight @FindFlight
 Feature: Find Flight
   this will find all flights based on a given airline
   Background:
